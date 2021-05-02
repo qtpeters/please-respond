@@ -3,16 +3,6 @@ from shutil import rmtree
 from invoke import task
 
 @task
-def build( c ):
-
-    """
-    Build the software and create an executable for distribution.
-    """
-
-    print("Building Please Respond...")
-    c.run( "pyinstaller -y please_respond.py" )
-
-@task
 def clean( c ):
 
     """
@@ -23,7 +13,19 @@ def clean( c ):
     rmtree( "build" )
     rmtree( "__pycache__" )
 
-@task(build)
+
+@task( clean )
+def build( c ):
+
+    """
+    Build the software and create an executable for distribution.
+    """
+
+    print("Building Please Respond...")
+    c.run( "pyinstaller -y please_respond.py" )
+
+
+@task( build )
 def run( c, seconds="" ):
 
     """
