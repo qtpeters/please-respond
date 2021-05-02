@@ -1,5 +1,6 @@
 
 from pleaserespond.prm import PleaseRespond
+from sys import exit
 
 def format_input( seconds ):
     try:
