@@ -30,6 +30,36 @@ class PleaseRespond( object ):
         self.ag.join()
 
     def report( self ):
-        return self.ag.get_data()
+
+        data = self.ag.get_data()
+
+        # Extract the total number of RSVPs
+        total = data[ "total" ]
+
+        # Get the latest url and date
+        latest = data[ "latest" ]
+        latest_url = latest[ "url" ]
+        latest_date = latest[ "date" ]
+
+        # Get the no1, no2 and no3 most RSVPs per country
+        npc = data[ "npc" ]
+        npc_sorted = sorted( npc, key=npc.get )
+
+        no1 = npc_sorted.pop()
+        vl1 = npc[ no1 ]
+        
+        no2 = npc_sorted.pop()
+        vl2 = npc[ no2 ]
+
+        no3 = npc_sorted.pop()
+        vl3 = npc[ no3 ]
+
+        report = "%d,%s,%s,%s,%d,%s,%d,%s,%d" % (
+            total, latest_date, latest_url, 
+            no1.strip(), vl1, no2.strip(), 
+            vl2, no3.strip(), vl3
+        )
+
+        return report
 
         
