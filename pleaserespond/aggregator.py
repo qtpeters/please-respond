@@ -8,6 +8,12 @@ from pleaserespond.flag import Flag
 from timezonefinder import TimezoneFinder
 from geopy.geocoders import Nominatim
 
+# The url that the requirements specified must be used
+# This value could be moved out into a config file if 
+# anyone cared to do so. For the purpose of this exercise,
+# I figure, who needs to complicate things?
+MEEETUP_RSVP_URL = "http://stream.meetup.com/2/rsvps"
+
 class Aggregator( threading.Thread ):
 
     """
@@ -24,7 +30,6 @@ class Aggregator( threading.Thread ):
         threading.Thread.__init__( self )
 
         self.flag = Flag()
-        self.rsvp_url = "http://stream.meetup.com/2/rsvps"
 
         now = datetime.now()
         GMT_tz = pytz.timezone( "Europe/London" )
@@ -161,7 +166,7 @@ class Aggregator( threading.Thread ):
 
     def run( self ):
         s = requests.Session()
-        with s.get( self.rsvp_url, headers=None, stream=True ) as resp:
+        with s.get( MEEETUP_RSVP_URL, headers=None, stream=True ) as resp:
             for line in resp.iter_lines():
 
                 # As long as there is a line from the stream and we haven't
