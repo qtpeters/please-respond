@@ -5,7 +5,7 @@ block_cipher = None
 
 
 a = Analysis(['please_respond.py'],
-             pathex=['/home/qtpeters/Repositories/please-respond/src'],
+             pathex=['/home/qtpeters/Repositories/please-respond'],
              binaries=[],
              datas=[],
              hiddenimports=[],
