@@ -3,6 +3,7 @@ import threading
 import requests
 
 from json import loads
+from datetime import datetime
 from pleaserespond.flag import Flag
 
 class Aggregator( threading.Thread ):
@@ -15,6 +16,7 @@ class Aggregator( threading.Thread ):
     to create the deliverable report
 
     """
+
     def __init__( self ):
 
         threading.Thread.__init__( self )
@@ -22,8 +24,7 @@ class Aggregator( threading.Thread ):
         self.flag = Flag()
         self.rsvp_url = "http://stream.meetup.com/2/rsvps"
         self.total = 0
-        self.latest_event = ()
-        self.latest_url = ()
+        self.latest = {}
         self.top_three_num_rsvps = {}
 
     def consume( self, data ):
@@ -31,6 +32,21 @@ class Aggregator( threading.Thread ):
         # Decode the data into a json string
         json_str = data.decode( "utf-8"  )
         entry = loads( json_str )
+
+        event = entry[ "event" ]
+        # TODO Use entry.venue.lat and entry.venue.lon to determine timezones
+        # data could be incorrect if date times are from different
+        # timezones.
+
+        # Get the event datetime from the timestamp 
+        ts_micro = event[ "time" ]
+        ts_milli = ts_milli/1000.0
+        incoming_dt = datetime.fromtimestamp(ts_milli)
+        existing_dt = self.latest[ "date" ]
+
+        if not existing_dt or incoming_dt > existing_dt:
+            self.latest[ "url" ] = event[ "event_url" ]
+            self.latest[ "date" ] = dt
 
         # Update the metrics
 
