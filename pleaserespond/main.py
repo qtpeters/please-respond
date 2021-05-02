@@ -23,6 +23,6 @@ def main( seconds ):
     please_respond.stream()
 
     # Get the report and display it.
-    num_venues = please_respond.report()
-    print( "There were a total of %d RSVPs" % num_venues )
+    data = please_respond.report()
+    print( data )
 

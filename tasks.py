@@ -1,5 +1,5 @@
 
-from shutil import rmtree
+from shutil import rmtree, copytree
 from invoke import task
 from os.path import exists
 
@@ -31,9 +31,18 @@ def build( c ):
 
     print("Building Please Respond...")
     c.run( "pyinstaller -y please_respond.py" )
-
-
+    
 @task( build )
+def prep( c ):
+
+    """
+    The prep task prepares the code to be run by placing 
+    config and binary files where they need to go.
+    """
+
+    copytree( "vendor", "dist/please_respond/timezonefinder" )
+
+@task( prep )
 def run( c, seconds="" ):
 
     """
