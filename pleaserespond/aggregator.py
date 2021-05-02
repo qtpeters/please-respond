@@ -1,4 +1,3 @@
-
 import threading
 import requests
 import pytz
@@ -64,6 +63,8 @@ class Aggregator( threading.Thread ):
         except:
             try:
                 # If the venue doesn't exist, try the group.
+                # It's better than nothing I guess, but it 
+                # probably isn't correct.
                 group = entry[ "group" ]
                 lat = group[ "group_lat"]
                 lon = group[ "lon" ]
@@ -77,6 +78,10 @@ class Aggregator( threading.Thread ):
 
     def _get_tz( self, entry ):
 
+        """
+        Returns the time zone for a given RSVP
+        """
+
         # Extract the values
 
         ( lat, lon ) = self._get_coords( entry )
@@ -88,6 +93,10 @@ class Aggregator( threading.Thread ):
         return pytz.timezone( tz )
 
     def _get_country( self, entry ):
+
+        """
+        Returns the country for a given RSVP
+        """
 
         ( lat, lon ) = self._get_coords( entry )
 
@@ -161,9 +170,6 @@ class Aggregator( threading.Thread ):
                     self.consume( line )
                 else: break
 
-    def get_data( self ):
-        return self.data
-
     def have_enough( self ):
 
         """ This method is run when enough
@@ -172,3 +178,10 @@ class Aggregator( threading.Thread ):
 
         self.flag.stop()
 
+    def get_data( self ):
+
+        """
+        Return the data when finished
+        """
+
+        return self.data

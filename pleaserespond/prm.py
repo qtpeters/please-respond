@@ -4,7 +4,17 @@ from pleaserespond.aggregator import Aggregator
 
 class PleaseRespond( object ):
 
+    """ 
+    PleaseRespond coordinates the activity of the streaming data
+    and builds the report from the data collected by the Aggregator
+    """
+
     def __init__( self, seconds ):
+
+        """
+        Sets the initial number of seconds and initilize the Aggregator
+        """
+
         self.seconds = seconds
         self.ag = Aggregator()
 
@@ -12,7 +22,6 @@ class PleaseRespond( object ):
 
         """
         stream() starts the collection of RSVPs from Meetup.com
-
         """
 
         print( "Streaming RSVPs for %d seconds" % self.seconds )
@@ -30,6 +39,11 @@ class PleaseRespond( object ):
         self.ag.join()
 
     def report( self ):
+
+        """
+        Creates the report that will be displayed to 
+        the user after data collection and aggregation
+        """
 
         data = self.ag.get_data()
 
@@ -54,6 +68,7 @@ class PleaseRespond( object ):
         no3 = npc_sorted.pop()
         vl3 = npc[ no3 ]
 
+        # Build the report
         report = "%d,%s,%s,%s,%d,%s,%d,%s,%d" % (
             total, latest_date, latest_url, 
             no1.strip(), vl1, no2.strip(), 
