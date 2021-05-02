@@ -3,7 +3,7 @@ import threading
 import requests
 
 from json import loads
-from datetime import datetime
+from datetime import datetime, date
 from pleaserespond.flag import Flag
 
 class Aggregator( threading.Thread ):
@@ -24,7 +24,13 @@ class Aggregator( threading.Thread ):
         self.flag = Flag()
         self.rsvp_url = "http://stream.meetup.com/2/rsvps"
         self.total = 0
-        self.latest = {}
+        
+        # If we get 
+        self.latest = {
+            "url": "No RSVPs received...",
+            "date": date.today()
+        }
+
         self.top_three_num_rsvps = {}
 
     def consume( self, data ):
