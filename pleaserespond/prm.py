@@ -32,9 +32,4 @@ class PleaseRespond( object ):
     def report( self ):
         return self.ag.get_data()
 
-def format_input( seconds ):
-    try:
-        return int( seconds )
-    except:
-        print( "This (%s) is not acceptable input, please enter an integer" % seconds )
-        exit( 1 )
+        
