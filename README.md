@@ -35,7 +35,7 @@ The code can be run three ways, where ${root} is the top level directory of this
 1. With the Invoke task runner.
 1. With the main script ( ${root}/please_respond.py ) in the top level directory
 1. (Experimental) The deployable executable: '${root}/dist/please_respond/please_respond.
-    1. I'm checking out Pyinstaller and that is a mostly untested artifact that, with a bit of tweaking could easily be used to deploy with a CI/CD pippeline.
+    1. I'm checking out Pyinstaller and that is a mostly untested artifact that, with a bit of tweaking could easily be used to deploy with a CI/CD pipeline.
 
 ### With Python Invoke
 

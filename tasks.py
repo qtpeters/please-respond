@@ -3,6 +3,10 @@ from shutil import rmtree, copytree
 from invoke import task
 from os.path import exists
 
+# Invoke will look for tests under this directory
+# the default file pattern for unit tests is test_*.py
+TEST_DIRECTORY = "./test"
+
 @task
 def clean( c ):
 
@@ -23,6 +27,16 @@ def clean( c ):
 
 
 @task( clean )
+def test( c ):
+
+    """
+    Run unit tests
+    """
+
+    cmd = "python -m unittest discover --verbose"
+    with c.cd( TEST_DIRECTORY ): c.run( cmd )
+
+@task( test )
 def build( c ):
 
     """
