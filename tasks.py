@@ -33,8 +33,8 @@ def test( c ):
     Run unit tests
     """
 
-    cmd = "python -m unittest discover --verbose"
-    with c.cd( TEST_DIRECTORY ): c.run( cmd )
+    cmd = "python -m unittest discover --verbose --start-directory %s" % TEST_DIRECTORY
+    c.run( cmd )
 
 @task( test )
 def build( c ):
