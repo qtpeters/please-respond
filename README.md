@@ -44,7 +44,7 @@ The Invoke task runner is installed as one of the required packages.  You can ru
 
 ### With ${root}/please_respond.py
 
-This script, please_respond.py, is the entry point for the pyinstaller executable and it executes the code as it is in the repository. 
+This script, please_respond.py, is the entry point for the pyinstaller executable and it executes the code as it is in the repository. Run: python ./please_respony.py
 
 ### With '${root}/dist/please_respond/please_respond.'
 
