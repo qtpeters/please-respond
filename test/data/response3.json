@@ -1,0 +1,88 @@
+{
+  "venue": {
+    "venue_name": "Online event",
+    "lon": 151.209900,
+    "lat": -33.865143,
+    "venue_id": 26906060
+  },
+  "visibility": "public",
+  "response": "yes",
+  "guests": 0,
+  "member": {
+    "member_id": 4131022,
+    "photo": "https://secure.meetupstatic.com/photos/member/a/e/1/c/thumb_4364572.jpeg",
+    "member_name": "Frank"
+  },
+  "rsvp_id": 1871914977,
+  "mtime": 1619819637075,
+  "event": {
+    "event_name": "ROS 2 - Autonomous Platforms",
+    "event_id": "xrrshsycchbnc",
+    "time": 1624399400000,
+    "event_url": "FIRST"
+  },
+  "group": {
+    "group_topics": [
+      {
+        "urlkey": "robotics",
+        "topic_name": "Robotics"
+      },
+      {
+        "urlkey": "ai",
+        "topic_name": "Artificial Intelligence"
+      },
+      {
+        "urlkey": "newtech",
+        "topic_name": "New Technology"
+      },
+      {
+        "urlkey": "cloud-computing",
+        "topic_name": "Cloud Computing"
+      },
+      {
+        "urlkey": "machine-learning",
+        "topic_name": "Machine Learning"
+      },
+      {
+        "urlkey": "neural-networks",
+        "topic_name": "Neural Networks"
+      },
+      {
+        "urlkey": "artificial-intelligence-applications",
+        "topic_name": "Artificial Intelligence Applications"
+      },
+      {
+        "urlkey": "machine-intelligence",
+        "topic_name": "Machine Intelligence"
+      },
+      {
+        "urlkey": "artificial-general-intelligence",
+        "topic_name": "Artificial General Intelligence"
+      },
+      {
+        "urlkey": "artificial-intelligence-programming",
+        "topic_name": "Artificial Intelligence Programming"
+      },
+      {
+        "urlkey": "artificial-intelligence-machine-learning-robotics",
+        "topic_name": "Artificial Intelligence Machine Learning Robotics"
+      },
+      {
+        "urlkey": "deep-learning",
+        "topic_name": "Deep Learning"
+      },
+      {
+        "urlkey": "internet-of-things",
+        "topic_name": "Internet of Things"
+      }
+    ],
+    "group_city": "Houston",
+    "group_country": "us",
+    "group_id": 21178707,
+    "group_name": "Artificial Intelligence and Machine Learning for Robotics",
+    "group_lon": -95.35,
+    "group_urlname": "ai-ml-for-robotics-and-iot",
+    "group_state": "TX",
+    "group_lat": 29.75
+  }
+}
