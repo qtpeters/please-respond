@@ -1,7 +1,7 @@
 import unittest
 from pleaserespond.prm import PleaseRespond
 from pleaserespond.aggregator import Aggregator
-from importlib_resources import files
+from test.util import _get_data
 
 class TestPrm( unittest.TestCase ):
 
@@ -12,13 +12,12 @@ class TestPrm( unittest.TestCase ):
 
     def _consume_test_data( self, pr ):
 
-        data1 = self._get_data( "response1.json" )
-        data2 = self._get_data( "response2.json" )
-        data3 = self._get_data( "response3.json" )
+        data1 = _get_data( "response1.json" )
+        data2 = _get_data( "response2.json" )
+        data3 = _get_data( "response3.json" )
         pr.ag.consume( data1.encode() )
         pr.ag.consume( data2.encode() )
         pr.ag.consume( data3.encode() )
-
 
     def test_prm( self ):
 

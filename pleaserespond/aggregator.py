@@ -17,18 +17,7 @@ MEEETUP_RSVP_URL = "http://stream.meetup.com/2/rsvps"
 # The UTC TimeZone is the basis for all local timezones
 UTC = "Europe/London"
 
-class AggregatorIfc( object ):
-    
-    def consume( self ) -> None:
-        pass
-
-    def have_enough( self ) -> None:
-        pass
-
-    def get_data( self ) -> dict:
-        pass
-
-class Aggregator( threading.Thread, AggregatorIfc ):
+class Aggregator( threading.Thread ):
 
     """
     The Aggregator is Thread who's function it is to gather
