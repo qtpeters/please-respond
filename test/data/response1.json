@@ -1,8 +1,8 @@
 {
   "venue": {
     "venue_name": "Online event",
-    "lon": 179.1962,
-    "lat": -8.521147,
+    "lon": -77.036560,
+    "lat": 38.897957,
     "venue_id": 26906060
   },
   "visibility": "public",
@@ -18,8 +18,8 @@
   "event": {
     "event_name": "ROS 2 - Autonomous Platforms",
     "event_id": "xrrshsycchbnc",
-    "time": 1622399400000,
-    "event_url": "https://www.meetup.com/ai-ml-for-robotics-and-iot/events/277908446/"
+    "time": 1623399400000,
+    "event_url": "SECOND"
   },
   "group": {
     "group_topics": [

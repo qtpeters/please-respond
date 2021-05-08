@@ -1,6 +1,7 @@
 
 from time import sleep
-from pleaserespond.aggregator import Aggregator
+from pleaserespond import aggregator
+import country_converter as coco
 
 class PleaseRespond( object ):
 
@@ -16,8 +17,20 @@ class PleaseRespond( object ):
         """
 
         self.seconds = seconds
-        self.ag = Aggregator()
+        self.ag = aggregator.Aggregator()
+        self.cc = coco.CountryConverter()
 
+    def _map_country( self, country ):
+
+        """
+        Maps a country name to it's ISO2 equivalent ( two letter name )
+        """
+
+        # Some of the Chinese names result in "Not Found"
+        # At least it's a lot better than I could do with 
+        # a Python dictionary
+        return self.cc.convert( names=country, to='ISO2' )
+        
     def stream( self ):
 
         """
@@ -39,6 +52,10 @@ class PleaseRespond( object ):
         self.ag.join()
 
     def report( self ):
+
+        def _prep( country_name ):
+            cn = country_name.strip()
+            return self._map_country( country_name ).lower()
 
         """
         Creates the report that will be displayed to 
@@ -71,8 +88,9 @@ class PleaseRespond( object ):
         # Build the report
         report = "%d,%s,%s,%s,%d,%s,%d,%s,%d" % (
             total, latest_date, latest_url, 
-            no1.strip(), vl1, no2.strip(), 
-            vl2, no3.strip(), vl3
+            _prep( no1 ), vl1, 
+            _prep( no2 ), vl2, 
+            _prep( no3 ), vl3
         )
 
         return report

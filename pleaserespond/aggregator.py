@@ -14,7 +14,21 @@ from geopy.geocoders import Nominatim
 # I figure, who needs to complicate things?
 MEEETUP_RSVP_URL = "http://stream.meetup.com/2/rsvps"
 
-class Aggregator( threading.Thread ):
+# The UTC TimeZone is the basis for all local timezones
+UTC = "Europe/London"
+
+class AggregatorIfc( object ):
+    
+    def consume( self ) -> None:
+        pass
+
+    def have_enough( self ) -> None:
+        pass
+
+    def get_data( self ) -> dict:
+        pass
+
+class Aggregator( threading.Thread, AggregatorIfc ):
 
     """
     The Aggregator is Thread who's function it is to gather
@@ -32,7 +46,7 @@ class Aggregator( threading.Thread ):
         self.flag = Flag()
 
         now = datetime.now()
-        GMT_tz = pytz.timezone( "Europe/London" )
+        GMT_tz = pytz.timezone( UTC )
         default_dt = GMT_tz.localize( now )
 
         self.data = {
@@ -124,7 +138,7 @@ class Aggregator( threading.Thread ):
         """
 
         # Decode the data into a json string
-        json_str = data.decode( "utf-8"  )
+        json_str = data.decode( "utf-8" )
         entry = loads( json_str )
 
         # Get the event and the timezone it's happening in
