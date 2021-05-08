@@ -22,6 +22,7 @@ Quinn Peters, 02-May-2021
 1. six==1.15.0
 1. timezonefinder==5.2.0
 1. urllib3==1.26.4
+1. country-converter==0.7.3
 
 The user is required to install Python 3.8.6.  I recommend [pyenv](https://github.com/pyenv/pyenv).
 A requirements.txt file is checked in and can be used to install all requirements at once save Python itelf. If
@@ -32,7 +33,7 @@ modules necessary to run Please Respond.
 
 The code can be run three ways, where ${root} is the top level directory of this repository: 
 
-1. With the Invoke task runner.
+1. With the Invoke task runner ( inv run ).
 1. With the main script ( ${root}/please_respond.py ) in the top level directory
 1. (Experimental) The deployable executable: '${root}/dist/please_respond/please_respond.
     1. I'm checking out Pyinstaller and that is a mostly untested artifact that, with a bit of tweaking could easily be used to deploy with a CI/CD pipeline.
